@@ -32,10 +32,26 @@ repositories {
 }
 
 
-//개발 필요한 의존성들을 선언함A
+//개발 필요한 의존성들을 선언함
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
+
+    //롬복관련
+    annotationProcessor ('org.projectlombok:lombok')
+    implementation ('org.projectlombok:lombok')
+    testAnnotationProcessor ('org.projectlombok:lombok')
+    testImplementation ('org.projectlombok:lombok')
+
     testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation("org.junit.vintage:junit-vintage-engine") {
+        exclude group: "org.hamcrest", module: "hamcrest-core"
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 test {
