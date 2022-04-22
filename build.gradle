@@ -32,7 +32,7 @@ repositories {
 }
 
 
-//개발 필요한 의존성들을 선언함
+//개발 필요한 의존성들을 선언함A
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
