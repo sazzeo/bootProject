@@ -42,10 +42,23 @@ dependencies {
     testAnnotationProcessor ('org.projectlombok:lombok')
     testImplementation ('org.projectlombok:lombok')
 
+    //jpa관련
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('com.h2database:h2')
+
+    //mybatis 관련
+    implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2")
+
+
+    //test와 junit관련
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation("org.junit.vintage:junit-vintage-engine") {
         exclude group: "org.hamcrest", module: "hamcrest-core"
     }
+
+
+
+
 }
 
 configurations {

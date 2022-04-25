@@ -10,7 +10,6 @@ public class Application {
 
         SpringApplication.run(Application.class , args); //WAS 설정
 
-
     }
 }
 
