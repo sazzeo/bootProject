@@ -49,6 +49,12 @@ dependencies {
     //mybatis 관련
     implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2")
 
+    //머스테치 관련
+    implementation('org.springframework.boot:spring-boot-starter-mustache')
+
+    //리소스 새로고침 관련
+    implementation('org.springframework.boot:spring-boot-devtools')
+
 
     //test와 junit관련
     testImplementation('org.springframework.boot:spring-boot-starter-test')

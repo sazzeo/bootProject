@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class PostsRepositoryTest {
     @Test
     public void 게시글저장_불러오기() {
 
-        String title  ="테스트 게시글";
+        String title = "테스트 게시글";
         String content = "테스트 본문";
 
         postsRepository.save(Posts.builder()
@@ -42,5 +43,29 @@ public class PostsRepositoryTest {
 
 
     }
+
+
+    //시간 자동 저장되는지 테스트하기
+    @Test
+    public void BastTimeTest() {
+
+        //포스트 저장
+        postsRepository.save(Posts.builder()
+                .title("title")
+                .content("content")
+                .author("author")
+                .build());
+
+
+        //포스트 찾기
+        List<Posts> postsList = postsRepository.findAll();
+
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>");
+        System.out.println(postsList.get(0).getCreateDate());
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>");
+
+
+    }
+
 
 }

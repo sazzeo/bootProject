@@ -59,11 +59,11 @@ public class PostsApiControllerTest {
     public void Posts_수정된다() throws Exception {
 
 
-        Posts savedPosts = postsRepository.save(Posts.builder().title("제목").content("내용").author("작가").build()) ;
+        Posts savedPosts = postsRepository.save(Posts.builder().title("title").content("content").author("author").build()) ;
 
         Long updateId = savedPosts.getId();
-        String expectedTitle = "제목2";
-        String expectedContent ="내용2";
+        String expectedTitle = "title2";
+        String expectedContent ="content2";
 
         PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder().title(expectedTitle).content(expectedContent).build();
 

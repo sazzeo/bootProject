@@ -9,13 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor  //자동으로 생성자 주입됨. @AutoWired 와 같은 기능
-@Controller
+@RestController
 public class PostApiController {
 
     private final PostsService postsService;
 
     @PostMapping("/api/v1/posts")
     public Long save(@RequestBody PostsSaveRequestDto requestDto) {
+        System.out.println(requestDto );
 
         return postsService.save(requestDto);
 

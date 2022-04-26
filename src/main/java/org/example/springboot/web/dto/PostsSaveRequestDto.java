@@ -25,11 +25,19 @@ public class PostsSaveRequestDto {
     public Posts toEntity() {
         return Posts.builder()
                 .title(title)
-                .title(content)
+                .content(content)
                 .author(author)
                 .build();
 
     }
 
 
+    @Override
+    public String toString() {
+        return "PostsSaveRequestDto{" +
+                "title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", author='" + author + '\'' +
+                '}';
+    }
 }
