@@ -62,11 +62,17 @@ dependencies {
     //세션 데이터 베이스 관련
     implementation('org.springframework.session:spring-session-jdbc')
 
+    //postgreSQL추가
+    implementation(group: 'org.postgresql' , name:'postgresql')
+
+
     //test와 junit관련
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation("org.junit.vintage:junit-vintage-engine") {
         exclude group: "org.hamcrest", module: "hamcrest-core"
     }
+    //스프링 시큐리티 test관련 이거없으면 test코드에서 에러남
+    testImplementation('org.springframework.security:spring-security-test')
 
 
 
