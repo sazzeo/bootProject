@@ -56,11 +56,18 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-devtools')
 
 
+    //시큐리티 관련
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
+
+    //세션 데이터 베이스 관련
+    implementation('org.springframework.session:spring-session-jdbc')
+
     //test와 junit관련
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation("org.junit.vintage:junit-vintage-engine") {
         exclude group: "org.hamcrest", module: "hamcrest-core"
     }
+
 
 
 

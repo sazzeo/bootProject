@@ -1,6 +1,9 @@
 package org.example.springboot.web;
 
 import lombok.RequiredArgsConstructor;
+import org.example.springboot.config.auth.LoginUser;
+import org.example.springboot.config.auth.dto.SessionUser;
+import org.example.springboot.domain.user.User;
 import org.example.springboot.service.posts.PostsService;
 import org.example.springboot.web.dto.PostsListResponseDto;
 import org.springframework.stereotype.Controller;
@@ -8,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -15,13 +19,20 @@ import java.util.List;
 public class IndexController {
 
     private final PostsService postsService;
+    private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model) {
-
+    public String index(Model model , @LoginUser SessionUser user) {
 
 
         model.addAttribute("posts",  postsService.findAllDesc());
+
+        if(user != null) {
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+            System.out.println(user.getName());
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+            model.addAttribute("myName" , user.getName());
+        }
 
         return "index"; //앞의 경로가 resources/templates 자동으로 붙고 뒤에 .mustache도 자동으로 붙음
     }
