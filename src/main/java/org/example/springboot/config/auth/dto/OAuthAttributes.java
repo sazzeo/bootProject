@@ -3,7 +3,7 @@ package org.example.springboot.config.auth.dto;
 import lombok.Builder;
 import lombok.Getter;
 import org.example.springboot.domain.user.Role;
-import org.example.springboot.domain.user.User;
+import org.example.springboot.domain.user.Users;
 
 import java.util.Map;
 
@@ -62,8 +62,8 @@ public class OAuthAttributes {
     }
 
 
-    public User toEntity() {
-        return User.builder()
+    public Users toEntity() {
+        return Users.builder()
                 .name(name)
                 .email(email)
                 .picture(picture)
