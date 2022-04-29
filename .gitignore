@@ -2,6 +2,6 @@
 .gradle
 .idea
 application-oauth.properties
-apllication-*.properties
+appllication-*.properties
 test/resources/application.properties
 
