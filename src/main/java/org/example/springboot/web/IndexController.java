@@ -34,6 +34,23 @@ public class IndexController {
         return "index"; //앞의 경로가 resources/templates 자동으로 붙고 뒤에 .mustache도 자동으로 붙음
     }
 
+    @GetMapping("/test")
+    public String test(Model model , @LoginUser SessionUser user) {
+
+
+        model.addAttribute("posts",  postsService.findAllDesc());
+
+        if(user != null) {
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+            System.out.println(user.getName());
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+            model.addAttribute("myName" , user.getName());
+        }
+
+        return "index"; //앞의 경로가 resources/templates 자동으로 붙고 뒤에 .mustache도 자동으로 붙음
+    }
+
+
     @GetMapping("/posts/save")
     public String postsSave() {
 

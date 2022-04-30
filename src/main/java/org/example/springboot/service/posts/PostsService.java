@@ -28,13 +28,13 @@ public class PostsService {
     }
 
     @Transactional
-    public Long update(Long id , PostsUpdateRequestDto requestDto) {
+    public Long update(Long id, PostsUpdateRequestDto requestDto) {
 
         //해당 게시글이 있는지 없는지 찾기
         Posts posts = postsRepository.findById(id)
-                .orElseThrow(()-> new IllegalArgumentException("해당 게시글이 업습니다. id=" + id));
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 업습니다. id=" + id));
 
-        posts.update(requestDto.getTitle() , requestDto.getContent());  //update 메소드
+        posts.update(requestDto.getTitle(), requestDto.getContent());  //update 메소드
 
         return id;
     }
@@ -42,7 +42,7 @@ public class PostsService {
     @Transactional
     public PostsResponseDto findById(Long id) {
         Posts entity = postsRepository.findById(id)
-                .orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id= " + id));
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id= " + id));
 
         return new PostsResponseDto(entity);
 
@@ -52,8 +52,6 @@ public class PostsService {
     //모든 데이터 select
     @Transactional(readOnly = true)
     public List<PostsListResponseDto> findAllDesc() {
-
-
 
         return postsRepository.findAllDesc().stream()
                 .map(PostsListResponseDto::new)
@@ -66,7 +64,7 @@ public class PostsService {
     public void delete(Long id) {
 
         postsRepository.findById(id)
-                .orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id= " + id));
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id= " + id));
 
         postsRepository.deleteById(id);
 
