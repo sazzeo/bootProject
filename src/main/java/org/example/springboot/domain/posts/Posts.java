@@ -23,6 +23,7 @@ public class Posts extends BaseTimeEntity {
     @Column(length = 500, nullable = false)
     private String title;
 
+    //columnDefinition 컬럼 default값 설정하기
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
