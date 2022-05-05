@@ -4,7 +4,7 @@ jdk:
 
 branches:
   only:
-    - master
+    - master #마스터 브랜치로 푸쉬될 떄만 자동 빌드 설정
 
 cache:
   directories:
