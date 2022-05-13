@@ -2,12 +2,15 @@ package org.example.springboot.service.posts;
 
 
 import lombok.RequiredArgsConstructor;
+import org.example.springboot.common.code.ResponseCode;
+import org.example.springboot.common.exception.HandleableException;
 import org.example.springboot.domain.posts.Posts;
 import org.example.springboot.domain.posts.PostsRepository;
 import org.example.springboot.web.dto.PostsListResponseDto;
 import org.example.springboot.web.dto.PostsResponseDto;
 import org.example.springboot.web.dto.PostsSaveRequestDto;
 import org.example.springboot.web.dto.PostsUpdateRequestDto;
+import org.example.springboot.web.validation.PostsValidation;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +24,7 @@ public class PostsService {
     private final PostsRepository postsRepository;
 
     @Transactional
-    public Long save(PostsSaveRequestDto requestDto) {
+    public Long save(PostsValidation requestDto) {
 
         return postsRepository.save(requestDto.toEntity()).getId();
 
@@ -32,7 +35,7 @@ public class PostsService {
 
         //해당 게시글이 있는지 없는지 찾기
         Posts posts = postsRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 업습니다. id=" + id));
+                .orElseThrow(() -> new HandleableException(ResponseCode.BAD_REQUEST));
 
         posts.update(requestDto.getTitle(), requestDto.getContent());  //update 메소드
 
@@ -42,7 +45,7 @@ public class PostsService {
     @Transactional
     public PostsResponseDto findById(Long id) {
         Posts entity = postsRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id= " + id));
+                .orElseThrow(() -> new HandleableException(ResponseCode.BAD_REQUEST));
 
         return new PostsResponseDto(entity);
 
@@ -64,8 +67,7 @@ public class PostsService {
     public void delete(Long id) {
 
         postsRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id= " + id));
-
+                .orElseThrow(() -> new HandleableException(ResponseCode.DELETE));
         postsRepository.deleteById(id);
 
     }

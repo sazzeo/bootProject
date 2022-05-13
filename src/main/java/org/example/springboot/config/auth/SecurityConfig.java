@@ -18,7 +18,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         //h2-console사용
-        http.csrf().disable()
+        http.cors().and()
+                .csrf().disable()
                 .headers().frameOptions().disable()
 
                 //URL별 권한 관리
