@@ -13,7 +13,9 @@ public enum ResponseCode {
     PUT(201001 , "Successfully updated data" , HttpStatus.CREATED) ,
     DELETE(201002 , "Successfully deleted data" , HttpStatus.CREATED),
     //에러관련
-    BAD_REQUEST(400000 ,  "파라미터 정보를 확인하세요" , HttpStatus.BAD_REQUEST);
+    BAD_REQUEST(400000 ,  "파라미터 정보를 확인하세요" , HttpStatus.BAD_REQUEST) ,
+
+    INTERNAL_SERVER_ERROR(500000 , "데이터 통신 에러입니다." , HttpStatus.INTERNAL_SERVER_ERROR);;
 
     private int code;
     private String message;
