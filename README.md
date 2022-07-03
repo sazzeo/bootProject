@@ -6,7 +6,7 @@
 3. 인원 : 1명(임지영)
 4. 환경 : intelliJ
 5. 사용기술 : AWS , RDS , Spring Boot , JPA , mustache 
-6. 배포 : http://ec2-52-78-53-135.ap-northeast-2.compute.amazonaws.com:9292/
+6. 배포 : 현재 배포 중단
 
 <pre>
 - [스프링 부트와 AWS로 혼자 구현하는 웹서비스] 책 기반 toy project
